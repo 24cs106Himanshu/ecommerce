@@ -77,11 +77,26 @@ const getWish = () => {
 };
 const setWish = w  => localStorage.setItem('ng_wish', JSON.stringify(w));
 
+const getOrders = () => {
+  var o = JSON.parse(localStorage.getItem('ng_orders') || '[]');
+  return o;
+};
+const setOrders = o => localStorage.setItem('ng_orders', JSON.stringify(o));
+
 /* ── CART BADGE ── */
 function updateCartBadge() {
   const el = $('cartCount');
   if (!el) return;
   const count = getCart().reduce((s, i) => s + i.qty, 0);
+  el.textContent = count;
+  el.style.display = count > 0 ? 'inline-flex' : 'none';
+}
+
+/* ── WISHLIST BADGE ── */
+function updateWishlistBadge() {
+  const el = $('wishCount');
+  if (!el) return;
+  const count = getWish().length;
   el.textContent = count;
   el.style.display = count > 0 ? 'inline-flex' : 'none';
 }
@@ -124,6 +139,10 @@ function toggleWish(id) {
   setWish(wish);
   var btn = document.querySelector('.card-wish[data-id="' + id + '"]');
   if (btn) btn.classList.toggle('active', wish.includes(id));
+  updateWishlistBadge();
+  if (typeof window.renderWishlist === 'function') {
+    window.renderWishlist();
+  }
 }
 
 /* ── PRODUCT CARD HTML ── */
@@ -582,9 +601,41 @@ function initCart() {
       var d = new Date(); d.setDate(d.getDate() + days);
       var dateEl = $('deliveryDate');
       if (dateEl) dateEl.textContent = d.toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long' });
+      
+      var cart = getCart();
+      var orderItems = cart.map(function(i) {
+        var p = window.PRODUCTS.find(function(x) { return x.id === i.id; });
+        return {
+          id: i.id,
+          name: p ? p.name : 'Unknown Product',
+          brand: p ? p.brand : '',
+          img: p ? p.img : '',
+          price: p ? p.price : 0,
+          qty: i.qty
+        };
+      });
+
+      var payInput = document.querySelector('input[name="pay"]:checked');
+      var payMethod = payInput ? payInput.value : 'upi';
+      var orderTotal = calcTotals().total;
+
+      var newOrder = {
+        id: orderId,
+        date: new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }),
+        deliveryDate: d.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }),
+        items: orderItems,
+        total: orderTotal,
+        status: 'Processing',
+        deliveryType: deliveryType,
+        paymentMethod: payMethod
+      };
+
+      var orders = getOrders();
+      orders.unshift(newOrder);
+      setOrders(orders);
+
       var ci = $('confirmedItems');
       if (ci) {
-        var cart = getCart();
         ci.innerHTML = '<div style="border:1px solid var(--border);border-radius:10px;overflow:hidden">' +
           cart.map(function(i, idx) {
             var p = window.PRODUCTS.find(function(x) { return x.id === i.id; });
@@ -606,6 +657,188 @@ function initCart() {
 document.addEventListener('DOMContentLoaded', function() {
   initNav();
   updateCartBadge();
+  updateWishlistBadge();
   initShop();
   initCart();
+  initWishlist();
+  initOrders();
 });
+
+/* ══════════════════════════════════════════
+   WISHLIST PAGE
+   ══════════════════════════════════════════ */
+function initWishlist() {
+  var grid = $('wishlistGrid');
+  if (!grid) return;
+
+  window.renderWishlist = function() {
+    var wish = getWish();
+    var list = window.PRODUCTS.filter(function(p) { return wish.indexOf(p.id) >= 0; });
+    var emptyEl = $('wishlistEmpty');
+    var headerActions = $('wishlistActions');
+
+    if (!list.length) {
+      grid.innerHTML = '';
+      if (emptyEl) emptyEl.style.display = 'block';
+      if (headerActions) headerActions.style.display = 'none';
+      return;
+    }
+
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (headerActions) headerActions.style.display = 'flex';
+
+    grid.innerHTML = list.map(function(p) {
+      return window.productCardHTML(p);
+    }).join('');
+
+    window.attachCardEvents(grid);
+  };
+
+  var clearWishBtn = $('clearWishlist');
+  if (clearWishBtn) {
+    clearWishBtn.addEventListener('click', function() {
+      setWish([]);
+      updateWishlistBadge();
+      window.renderWishlist();
+      window.toast('Wishlist cleared', 'info');
+    });
+  }
+
+  var addAllBtn = $('addAllToCart');
+  if (addAllBtn) {
+    addAllBtn.addEventListener('click', function() {
+      var wish = getWish();
+      if (!wish.length) return;
+      var cart = getCart();
+      var addedCount = 0;
+      wish.forEach(function(id) {
+        var existing = cart.find(function(i) { return i.id === id; });
+        if (existing) {
+          existing.qty++;
+        } else {
+          cart.push({ id: id, qty: 1 });
+        }
+        addedCount++;
+      });
+      setCart(cart);
+      updateCartBadge();
+      window.toast('Added ' + addedCount + ' items to cart! 🛒', 'success');
+    });
+  }
+
+  window.renderWishlist();
+}
+
+/* ══════════════════════════════════════════
+   ORDERS PAGE
+   ══════════════════════════════════════════ */
+function initOrders() {
+  var listEl = $('ordersList');
+  if (!listEl) return;
+
+  function renderOrders() {
+    var orders = getOrders();
+    var emptyEl = $('ordersEmpty');
+
+    if (!orders.length) {
+      listEl.innerHTML = '';
+      if (emptyEl) emptyEl.style.display = 'block';
+      return;
+    }
+
+    if (emptyEl) emptyEl.style.display = 'none';
+
+    listEl.innerHTML = orders.map(function(o) {
+      var statusClass = o.status.toLowerCase();
+      var itemsHTML = o.items.map(function(item) {
+        return '<div class="order-item-row">' +
+          '<div style="display:flex;align-items:center;gap:14px">' +
+            '<img src="' + item.img + '" alt="' + item.name + '" class="order-item-img" onerror="this.src=\'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=600&q=85\'"/>' +
+            '<div>' +
+              '<p class="order-item-brand">' + item.brand + '</p>' +
+              '<p class="order-item-name">' + item.name + '</p>' +
+              '<p class="order-item-qty">Qty: ' + item.qty + ' · ' + fmt(item.price) + ' each</p>' +
+            '</div>' +
+          '</div>' +
+          '<span class="order-item-subtotal">' + fmt(item.price * item.qty) + '</span>' +
+        '</div>';
+      }).join('');
+
+      var isProcessing = o.status === 'Processing';
+      var actionButton = isProcessing
+        ? '<button class="btn btn-outline btn-sm cancel-order-btn" data-id="' + o.id + '">Cancel Order</button>'
+        : '';
+
+      var statusLabel = o.status === 'Cancelled' ? '❌ Cancelled' :
+                        o.status === 'Processing' ? '⏳ Processing' : '✅ Delivered';
+
+      return '<div class="order-card">' +
+        '<div class="order-card-header">' +
+          '<div>' +
+            '<p class="order-card-id">Order ID: <span>' + o.id + '</span></p>' +
+            '<p class="order-card-meta">Placed on ' + o.date + ' · Paid via ' + o.paymentMethod.toUpperCase() + '</p>' +
+          '</div>' +
+          '<div style="text-align:right">' +
+            '<span class="order-status-badge ' + statusClass + '">' + statusLabel + '</span>' +
+            '<p class="order-card-total" style="margin-top:6px">Total: <span>' + fmt(o.total) + '</span></p>' +
+          '</div>' +
+        '</div>' +
+        '<div class="order-card-body">' +
+          '<div class="order-items-container">' + itemsHTML + '</div>' +
+          '<div class="order-card-footer">' +
+            '<div class="order-est">' +
+              (o.status === 'Processing' ? '🚚 Expected delivery: <strong>' + o.deliveryDate + '</strong>' : '') +
+              (o.status === 'Cancelled' ? '❌ This order was cancelled.' : '') +
+            '</div>' +
+            '<div class="order-actions-bar">' +
+              actionButton +
+              '<button class="btn btn-primary btn-sm reorder-btn" data-id="' + o.id + '">Reorder Items</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    // Attach cancellation event
+    listEl.querySelectorAll('.cancel-order-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var orders = getOrders();
+        var order = orders.find(function(o) { return o.id === id; });
+        if (order) {
+          order.status = 'Cancelled';
+          setOrders(orders);
+          renderOrders();
+          window.toast('Order ' + id + ' has been cancelled.', 'info');
+        }
+      });
+    });
+
+    // Attach reorder event
+    listEl.querySelectorAll('.reorder-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var orders = getOrders();
+        var order = orders.find(function(o) { return o.id === id; });
+        if (order) {
+          var cart = getCart();
+          var reorderCount = 0;
+          order.items.forEach(function(item) {
+            var existing = cart.find(function(i) { return i.id === item.id; });
+            if (existing) {
+              existing.qty += item.qty;
+            } else {
+              cart.push({ id: item.id, qty: item.qty });
+            }
+            reorderCount += item.qty;
+          });
+          setCart(cart);
+          updateCartBadge();
+          window.toast('Added ' + reorderCount + ' items back to your cart! 🛒', 'success');
+        }
+      });
+    });
+  }
+
+  renderOrders();
+}

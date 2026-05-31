@@ -123,6 +123,28 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 5px;
 }
 
+.wishlist-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600 !important;
+  color: var(--ink) !important;
+}
+
+.wish-count {
+  background: var(--accent-3);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5px;
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
@@ -1681,4 +1703,222 @@ h3 { font-size: 1.1rem; }
   .pm-actions {
     margin-top: 16px;
   }
+}
+
+/* ── WISHLIST & ORDERS SECTIONS ── */
+
+.wishlist-empty,
+.orders-empty {
+  text-align: center;
+  padding: 60px 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.wishlist-empty-icon,
+.orders-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.wishlist-empty h3,
+.orders-empty h3 {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.wishlist-empty p,
+.orders-empty p {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+/* Orders Styles */
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 40px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.order-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.22s var(--ease);
+}
+
+.order-card:hover {
+  border-color: var(--border-light);
+}
+
+.order-card-header {
+  background: var(--bg-alt);
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.order-card-id {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+
+.order-card-id span {
+  color: var(--accent-2);
+}
+
+.order-card-meta {
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+
+.order-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.order-status-badge.processing {
+  background: rgba(124, 92, 252, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(124, 92, 252, 0.25);
+}
+
+.order-status-badge.cancelled {
+  background: rgba(244, 63, 94, 0.12);
+  color: var(--accent-3);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+}
+
+.order-status-badge.delivered {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--accent-g);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.order-card-total {
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+
+.order-card-total span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.order-card-body {
+  padding: 24px;
+}
+
+.order-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+}
+
+.order-item-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.order-item-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+}
+
+.order-item-brand {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  letter-spacing: 0.05em;
+}
+
+.order-item-name {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 2px;
+}
+
+.order-item-qty {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  margin-top: 4px;
+}
+
+.order-item-subtotal {
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.order-card-footer {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.order-est {
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+
+.order-est strong {
+  color: var(--ink);
+}
+
+.order-actions-bar {
+  display: flex;
+  gap: 12px;
+}
+
+.wishlist-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 24px;
 }
