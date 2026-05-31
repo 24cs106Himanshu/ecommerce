@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Contact NexusGear — we're here to help with your orders, products and anything else."/>
+  <title>NexusGear | Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="index.html" class="brand">Nexus<span>Gear</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<section style="padding:80px 0 0">
+  <div class="container" style="max-width:760px">
+    <p class="eyebrow">Get in touch</p>
+    <h1 style="font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-0.03em;margin-bottom:12px">We're here to help.</h1>
+    <p style="color:var(--ink-3);font-size:0.9rem">
+      <a href="index.html" style="color:var(--ink-3)">Home</a> / Contact
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:48px">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;max-width:900px">
+
+      <!-- Contact info -->
+      <div>
+        <h2 style="font-size:1.5rem;margin-bottom:24px">Contact Info</h2>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:1.3rem;margin-top:2px">📧</span>
+            <div>
+              <p style="font-family:var(--font-head);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px">Email</p>
+              <a href="mailto:support@nexusgear.in" style="color:var(--accent);font-size:0.92rem">support@nexusgear.in</a>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:1.3rem;margin-top:2px">📞</span>
+            <div>
+              <p style="font-family:var(--font-head);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px">Phone</p>
+              <a href="tel:+918800000000" style="color:var(--ink);font-size:0.92rem">+91 88000 00000</a>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:1.3rem;margin-top:2px">🕐</span>
+            <div>
+              <p style="font-family:var(--font-head);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px">Hours</p>
+              <p style="color:var(--ink-2);font-size:0.9rem">Mon–Sat, 10am–7pm IST</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <span style="font-size:1.3rem;margin-top:2px">🎮</span>
+            <div>
+              <p style="font-family:var(--font-head);font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px">Discord</p>
+              <a href="#" style="color:var(--accent);font-size:0.92rem">discord.gg/nexusgear</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div>
+        <div class="cart-panel">
+          <p class="cart-panel-title">Send a message</p>
+          <form id="contactForm" style="display:flex;flex-direction:column;gap:14px">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Rahul Sharma" required/>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="rahul@example.com" required/>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select>
+                <option>Order issue</option>
+                <option>Product query</option>
+                <option>Return / refund</option>
+                <option>Partnership</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea rows="4" placeholder="Tell us how we can help…" style="resize:vertical" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Message →</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Nexus<span>Gear</span></div>
+        <p>Your go-to store for premium gaming peripherals, components and accessories.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Discord">🎮</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Shop</h5><ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html?cat=controllers">Controllers</a></li><li><a href="shop.html?cat=headsets">Headsets</a></li><li><a href="shop.html?cat=gpu">GPU & Cards</a></li></ul></div>
+      <div class="footer-col"><h5>Help</h5><ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NexusGear. All rights reserved.</p>
+      <p>Built for gamers, by gamers 🎮</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toastWrap"></div>
+<script src="../js/script.js"></script>
+<script>
+  // Contact form handler
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // reuse toast from script.js
+    function toast(msg, type) {
+      const wrap = document.getElementById('toastWrap');
+      const el = document.createElement('div');
+      el.className = 'toast';
+      el.innerHTML = (type==='success'?'✅':'🎮') + ' ' + msg;
+      wrap.appendChild(el);
+      setTimeout(() => { el.classList.add('removing'); setTimeout(()=>el.remove(),320); }, 3000);
+    }
+    toast("Message sent! We'll get back to you within 24h.", 'success');
+    this.reset();
+  });
+</script>
+</body>
+</html>

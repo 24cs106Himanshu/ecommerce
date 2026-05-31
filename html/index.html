@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="NexusGear — Premium gaming peripherals, GPUs, monitors & more. Built for players who demand the best."/>
+  <title>NexusGear | Built for Champions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/cinematic.css"/>
+</head>
+<body class="cinematic-page">
+
+<!-- ── HEADER ── -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-row">
+    <a href="index.html" class="brand">Nexus<span>Gear</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     01 · CINEMATIC HERO
+════════════════════════════════════════ -->
+<section class="c-hero" id="hero">
+  <div class="c-hero__bg">
+    <img src="../images/hero_controller.png" alt="" class="c-hero__img" id="heroImg"/>
+    <div class="c-hero__overlay"></div>
+    <!-- Grid lines -->
+    <div class="c-grid" aria-hidden="true"></div>
+  </div>
+
+  <div class="container c-hero__content">
+    <div class="c-hero__text">
+      <p class="c-eyebrow reveal-up" style="--delay:0.1s">Season 2026 · New Arrivals</p>
+      <h1 class="c-hero__title">
+        <span class="reveal-up" style="--delay:0.2s">Built for</span>
+        <span class="reveal-up c-accent-line" style="--delay:0.35s">Champions.</span>
+      </h1>
+      <p class="c-hero__sub reveal-up" style="--delay:0.5s">
+        Premium gaming gear engineered for performance.<br/>
+        Controllers. Headsets. GPUs. Monitors. Everything.
+      </p>
+      <div class="c-hero__actions reveal-up" style="--delay:0.65s">
+        <a href="shop.html" class="c-btn c-btn--primary">Shop Now</a>
+        <a href="#features" class="c-btn c-btn--ghost">Explore ↓</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="c-scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="c-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     02 · STATS BAR
+════════════════════════════════════════ -->
+<div class="c-statsbar">
+  <div class="container c-statsbar__grid">
+    <div class="c-stat">
+      <strong class="c-stat__num" data-count="200">0</strong><span>+</span>
+      <p>Brands</p>
+    </div>
+    <div class="c-divider"></div>
+    <div class="c-stat">
+      <strong class="c-stat__num" data-count="50">0</strong><span>K+</span>
+      <p>Orders Shipped</p>
+    </div>
+    <div class="c-divider"></div>
+    <div class="c-stat">
+      <strong class="c-stat__num" data-count="4">0</strong><span>.9★</span>
+      <p>Avg. Rating</p>
+    </div>
+    <div class="c-divider"></div>
+    <div class="c-stat">
+      <strong class="c-stat__num" data-count="24">0</strong><span>h</span>
+      <p>Support</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     03 · FEATURE SECTIONS (ROG-style)
+════════════════════════════════════════ -->
+<div id="features">
+
+  <!-- SECTION A: Controllers — image from LEFT -->
+  <section class="c-feature c-feature--left">
+    <div class="c-feature__img-wrap slide-from-left">
+      <img src="../images/hero_controller.png" alt="DualSense Edge Controller" class="c-feature__img"/>
+      <div class="c-feature__img-glow"></div>
+    </div>
+    <div class="c-feature__body slide-from-right">
+      <p class="c-eyebrow">Controllers</p>
+      <h2 class="c-feature__title">Feel every<br/>heartbeat.</h2>
+      <p class="c-feature__desc">
+        From Sony DualSense Edge to Xbox Elite Series 2 — pro-grade controllers with adaptive triggers, haptic feedback and tournament-level precision.
+      </p>
+      <ul class="c-feature__list">
+        <li>Adaptive haptic triggers</li>
+        <li>Hall-effect analog sticks</li>
+        <li>40+ hour battery life</li>
+        <li>Interchangeable modules</li>
+      </ul>
+      <a href="shop.html?cat=controllers" class="c-btn c-btn--primary" style="margin-top:28px">Shop Controllers</a>
+    </div>
+  </section>
+
+  <!-- SECTION B: Headsets — image from RIGHT -->
+  <section class="c-feature c-feature--right c-feature--dark">
+    <div class="c-feature__body slide-from-left">
+      <p class="c-eyebrow">Headsets</p>
+      <h2 class="c-feature__title">Hear every<br/>bullet drop.</h2>
+      <p class="c-feature__desc">
+        Spatial audio headsets with 360° surround sound. Hear enemies before they see you. HyperX, SteelSeries, Corsair — every major brand in stock.
+      </p>
+      <ul class="c-feature__list">
+        <li>360° spatial audio</li>
+        <li>Active noise cancellation</li>
+        <li>50mm neodymium drivers</li>
+        <li>Discord-certified mics</li>
+      </ul>
+      <a href="shop.html?cat=headsets" class="c-btn c-btn--primary" style="margin-top:28px">Shop Headsets</a>
+    </div>
+    <div class="c-feature__img-wrap slide-from-right">
+      <img src="../images/section_headset.png" alt="Gaming Headset" class="c-feature__img"/>
+      <div class="c-feature__img-glow" style="background:radial-gradient(circle,rgba(6,182,212,0.2),transparent 60%)"></div>
+    </div>
+  </section>
+
+  <!-- SECTION C: GPUs — image from LEFT -->
+  <section class="c-feature c-feature--left">
+    <div class="c-feature__img-wrap slide-from-left">
+      <img src="../images/section_gpu.png" alt="RTX 4090 GPU" class="c-feature__img"/>
+      <div class="c-feature__img-glow" style="background:radial-gradient(circle,rgba(124,92,252,0.25),transparent 60%)"></div>
+    </div>
+    <div class="c-feature__body slide-from-right">
+      <p class="c-eyebrow">GPU & Cards</p>
+      <h2 class="c-feature__title">Render the<br/>impossible.</h2>
+      <p class="c-feature__desc">
+        RTX 4090 to RX 7900 XTX — the latest silicon from NVIDIA and AMD. Ray tracing, DLSS 3, FSR 3. Max frames, max fidelity.
+      </p>
+      <ul class="c-feature__list">
+        <li>Up to 24GB GDDR6X VRAM</li>
+        <li>8K gaming capable</li>
+        <li>DLSS 3 / FSR 3 support</li>
+        <li>RTX ray tracing</li>
+      </ul>
+      <a href="shop.html?cat=gpu" class="c-btn c-btn--primary" style="margin-top:28px">Shop GPUs</a>
+    </div>
+  </section>
+
+  <!-- SECTION D: Monitors — image from RIGHT -->
+  <section class="c-feature c-feature--right c-feature--dark">
+    <div class="c-feature__body slide-from-left">
+      <p class="c-eyebrow">Monitors</p>
+      <h2 class="c-feature__title">See more.<br/>React faster.</h2>
+      <p class="c-feature__desc">
+        4K OLED panels at 144Hz. Ultra-wide 240Hz curved displays. Every pixel matters when a millisecond decides the match.
+      </p>
+      <ul class="c-feature__list">
+        <li>Up to 360Hz refresh rate</li>
+        <li>0.1ms OLED response time</li>
+        <li>4K UHD / WQHD options</li>
+        <li>G-Sync / FreeSync support</li>
+      </ul>
+      <a href="shop.html?cat=monitors" class="c-btn c-btn--primary" style="margin-top:28px">Shop Monitors</a>
+    </div>
+    <div class="c-feature__img-wrap slide-from-right">
+      <img src="../images/section_monitor.png" alt="Gaming Monitor" class="c-feature__img"/>
+      <div class="c-feature__img-glow" style="background:radial-gradient(circle,rgba(34,211,238,0.15),transparent 60%)"></div>
+    </div>
+  </section>
+
+  <!-- SECTION E: Peripherals — full-width keyboard -->
+  <section class="c-feature-full">
+    <div class="c-feature-full__img-wrap slide-from-bottom">
+      <img src="../images/section_keyboard.png" alt="Gaming Keyboard" class="c-feature-full__img"/>
+      <div class="c-feature-full__overlay">
+        <div class="slide-from-bottom" style="--delay:0.2s">
+          <p class="c-eyebrow" style="color:rgba(255,255,255,0.6)">Peripherals</p>
+          <h2 class="c-feature__title" style="font-size:clamp(2rem,5vw,3.8rem)">Every keystroke.<br/>Perfected.</h2>
+          <p style="color:rgba(255,255,255,0.5);max-width:480px;line-height:1.7;margin:16px 0 28px">
+            Mechanical keyboards, ultra-light mice, precision mousepads. The tools that separate winners from the rest.
+          </p>
+          <a href="shop.html?cat=peripherals" class="c-btn c-btn--primary">Shop Peripherals</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════════
+     04 · FEATURED PRODUCTS
+════════════════════════════════════════ -->
+<section class="c-products-section">
+  <div class="container">
+    <div class="c-section-head slide-from-bottom">
+      <div>
+        <p class="c-eyebrow">Handpicked</p>
+        <h2 class="c-section-title">Top Gear Right Now</h2>
+      </div>
+      <a href="shop.html" class="c-link-arrow">View all →</a>
+    </div>
+
+    <!-- Category filter chips -->
+    <div class="c-chips slide-from-bottom" style="--delay:0.1s" id="homeCatChips">
+      <button class="c-chip active" data-cat="all">All</button>
+      <button class="c-chip" data-cat="controllers">Controllers</button>
+      <button class="c-chip" data-cat="headsets">Headsets</button>
+      <button class="c-chip" data-cat="gpu">GPU</button>
+      <button class="c-chip" data-cat="monitors">Monitors</button>
+      <button class="c-chip" data-cat="peripherals">Peripherals</button>
+      <button class="c-chip" data-cat="chairs">Chairs</button>
+    </div>
+
+    <div class="product-grid" id="homeProductGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     05 · MARQUEE STRIP
+════════════════════════════════════════ -->
+<div class="c-marquee-wrap" aria-hidden="true">
+  <div class="c-marquee">
+    <span>CONTROLLERS</span><span class="c-dot">·</span>
+    <span>HEADSETS</span><span class="c-dot">·</span>
+    <span>GPU &amp; CARDS</span><span class="c-dot">·</span>
+    <span>MONITORS</span><span class="c-dot">·</span>
+    <span>KEYBOARDS</span><span class="c-dot">·</span>
+    <span>MICE</span><span class="c-dot">·</span>
+    <span>GAMING CHAIRS</span><span class="c-dot">·</span>
+    <span>MOUSEPADS</span><span class="c-dot">·</span>
+    <span>CONTROLLERS</span><span class="c-dot">·</span>
+    <span>HEADSETS</span><span class="c-dot">·</span>
+    <span>GPU &amp; CARDS</span><span class="c-dot">·</span>
+    <span>MONITORS</span><span class="c-dot">·</span>
+    <span>KEYBOARDS</span><span class="c-dot">·</span>
+    <span>MICE</span><span class="c-dot">·</span>
+    <span>GAMING CHAIRS</span><span class="c-dot">·</span>
+    <span>MOUSEPADS</span><span class="c-dot">·</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     06 · NEWSLETTER
+════════════════════════════════════════ -->
+<section class="c-newsletter">
+  <div class="container c-newsletter__inner slide-from-bottom">
+    <p class="c-eyebrow">Stay in the loop</p>
+    <h2>Deals before anyone else.</h2>
+    <p class="c-newsletter__sub">New drops, exclusive discounts and gaming news — straight to your inbox.</p>
+    <form class="c-nl-form" id="nlForm">
+      <input type="email" id="nlEmail" placeholder="Enter your email address" required/>
+      <button type="submit" class="c-btn c-btn--primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Nexus<span>Gear</span></div>
+        <p>Your go-to store for premium gaming peripherals, components and accessories. Built for players who take their game seriously.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Discord">🎮</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=controllers">Controllers</a></li>
+          <li><a href="shop.html?cat=headsets">Headsets</a></li>
+          <li><a href="shop.html?cat=gpu">GPU & Cards</a></li>
+          <li><a href="shop.html?cat=monitors">Monitors</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Help</h5>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NexusGear. All rights reserved.</p>
+      <p>Built for gamers, by gamers 🎮</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toastWrap"></div>
+<script src="../js/script.js"></script>
+<script src="../js/cinematic.js"></script>
+</body>
+</html>

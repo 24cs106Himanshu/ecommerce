@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Shop all gaming gear — Controllers, Headsets, GPUs, Monitors, Peripherals and more at NexusGear."/>
+  <title>NexusGear | Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="index.html" class="brand">Nexus<span>Gear</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE TITLE -->
+<section style="padding:44px 0 0">
+  <div class="container">
+    <p class="eyebrow">All Products</p>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:6px">Shop Gaming Gear</h1>
+    <p style="color:var(--ink-3);font-size:0.9rem">
+      <a href="index.html" style="color:var(--ink-3)">Home</a> / Shop
+    </p>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="section" style="padding-top:32px">
+  <div class="container">
+    <div class="shop-layout">
+
+      <!-- FILTER SIDEBAR -->
+      <aside class="filter-panel">
+        <div class="filter-title">
+          Filters
+          <button class="filter-clear-btn" id="clearAll">Clear all</button>
+        </div>
+
+        <div class="filter-group">
+          <p class="filter-group-title">Category</p>
+          <div class="filter-option"><input type="radio" name="cat" value="all" checked/> All Products</div>
+          <div class="filter-option"><input type="radio" name="cat" value="new"/> New Drops</div>
+          <div class="filter-option"><input type="radio" name="cat" value="controllers"/> Controllers</div>
+          <div class="filter-option"><input type="radio" name="cat" value="headsets"/> Headsets</div>
+          <div class="filter-option"><input type="radio" name="cat" value="gpu"/> GPU & Cards</div>
+          <div class="filter-option"><input type="radio" name="cat" value="monitors"/> Monitors</div>
+          <div class="filter-option"><input type="radio" name="cat" value="peripherals"/> Peripherals</div>
+          <div class="filter-option"><input type="radio" name="cat" value="chairs"/> Gaming Chairs</div>
+          <div class="filter-option"><input type="radio" name="cat" value="sale"/> On Sale</div>
+        </div>
+
+        <div class="filter-group">
+          <p class="filter-group-title">Price Range</p>
+          <div class="price-row">
+            <span>₹<span id="priceMinLbl">0</span></span>
+            <span id="priceMaxLbl">₹2,00,000</span>
+          </div>
+          <input type="range" class="range-slider" id="priceMax" min="0" max="200000" value="200000" step="1000"/>
+        </div>
+
+        <div class="filter-group">
+          <p class="filter-group-title">Rating</p>
+          <label class="filter-option"><input type="radio" name="rating" value="0" checked/> Any rating</label>
+          <label class="filter-option"><input type="radio" name="rating" value="4"/> 4★ & above</label>
+          <label class="filter-option"><input type="radio" name="rating" value="4.5"/> 4.5★ & above</label>
+        </div>
+
+        <div class="filter-group">
+          <p class="filter-group-title">Discount</p>
+          <label class="filter-option"><input type="radio" name="disc" value="0" checked/> Any</label>
+          <label class="filter-option"><input type="radio" name="disc" value="20"/> 20% or more</label>
+          <label class="filter-option"><input type="radio" name="disc" value="30"/> 30% or more</label>
+        </div>
+      </aside>
+
+      <!-- PRODUCTS -->
+      <div>
+        <div class="products-toolbar">
+          <p class="results-info" id="resultsInfo">Loading…</p>
+          <select class="sort-select" id="sortSel">
+            <option value="default">Relevance</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="discount">Biggest Discount</option>
+          </select>
+        </div>
+        <div class="product-grid" id="shopGrid"></div>
+        <div style="text-align:center;margin-top:36px">
+          <button class="btn btn-outline" id="loadMore" style="display:none">Load more</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Nexus<span>Gear</span></div>
+        <p>Your go-to store for premium gaming peripherals, components and accessories.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Discord">🎮</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="shop.html?cat=controllers">Controllers</a></li>
+          <li><a href="shop.html?cat=headsets">Headsets</a></li>
+          <li><a href="shop.html?cat=gpu">GPU & Cards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Help</h5>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 NexusGear. All rights reserved.</p>
+      <p>Built for gamers, by gamers 🎮</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toastWrap"></div>
+<script src="../js/script.js"></script>
+</body>
+</html>

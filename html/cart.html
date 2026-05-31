@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="Your NexusGear cart — review items, enter delivery details and pay securely."/>
+  <title>NexusGear | Cart & Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="index.html" class="brand">Nexus<span>Gear</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html" class="cart-link active">Cart <span class="cart-count" id="cartCount">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE TITLE -->
+<section style="padding:44px 0 0">
+  <div class="container">
+    <p class="eyebrow">Checkout</p>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:12px">Your Cart</h1>
+
+    <!-- Step progress -->
+    <div class="checkout-steps" id="checkoutSteps">
+      <div class="step active" id="step1">
+        <span class="step-num">1</span> Cart
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step2">
+        <span class="step-num">2</span> Delivery
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step3">
+        <span class="step-num">3</span> Payment
+      </div>
+      <div class="step-line"></div>
+      <div class="step" id="step4">
+        <span class="step-num">4</span> Confirm
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container cart-layout">
+
+  <!-- LEFT — tabs panel -->
+  <div>
+    <!-- Tab buttons -->
+    <div class="cart-tabs" id="cartTabs">
+      <button class="cart-tab active" data-tab="cart"     id="tabCart">🛒 Cart</button>
+      <button class="cart-tab"        data-tab="delivery" id="tabDelivery" disabled>📦 Delivery</button>
+      <button class="cart-tab"        data-tab="payment"  id="tabPayment"  disabled>💳 Payment</button>
+    </div>
+
+    <!-- TAB 1: Cart Items -->
+    <div id="panelCart">
+      <div id="cartItemsList"></div>
+
+      <!-- empty state -->
+      <div class="cart-empty" id="cartEmpty" style="display:none">
+        <div class="cart-empty-icon">🎮</div>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added anything yet.</p>
+        <a href="shop.html" class="btn btn-primary" style="margin-top:20px">Browse Gear</a>
+      </div>
+
+      <div id="cartItemsFooter" style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="shop.html" class="btn btn-outline">← Continue Shopping</a>
+        <button class="btn btn-primary" id="goToDelivery">Proceed to Delivery →</button>
+      </div>
+    </div>
+
+    <!-- TAB 2: Delivery -->
+    <div id="panelDelivery" style="display:none">
+      <div class="cart-panel">
+        <p class="cart-panel-title">Delivery Address</p>
+        <form id="addressForm">
+          <div class="form-grid" style="margin-bottom:14px">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" id="fname" placeholder="Rahul" required/>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" id="lname" placeholder="Sharma" required/>
+            </div>
+          </div>
+          <div class="form-grid single" style="margin-bottom:14px">
+            <div class="form-group">
+              <label>Mobile *</label>
+              <input type="tel" id="phone" placeholder="10-digit number" maxlength="10" required/>
+            </div>
+          </div>
+          <div class="form-grid single" style="margin-bottom:14px">
+            <div class="form-group">
+              <label>Address Line 1 *</label>
+              <input type="text" id="addr1" placeholder="Flat, Building, Street" required/>
+            </div>
+          </div>
+          <div class="form-grid single" style="margin-bottom:14px">
+            <div class="form-group">
+              <label>Address Line 2</label>
+              <input type="text" id="addr2" placeholder="Area, Landmark (optional)"/>
+            </div>
+          </div>
+          <div class="form-grid" style="margin-bottom:14px">
+            <div class="form-group">
+              <label>City *</label>
+              <input type="text" id="city" placeholder="Mumbai" required/>
+            </div>
+            <div class="form-group">
+              <label>Pincode *</label>
+              <input type="text" id="pin" placeholder="400001" maxlength="6" required/>
+            </div>
+          </div>
+          <div class="form-grid single" style="margin-bottom:24px">
+            <div class="form-group">
+              <label>State *</label>
+              <select id="state" required>
+                <option value="">Select State</option>
+                <option>Maharashtra</option><option>Delhi</option><option>Karnataka</option>
+                <option>Tamil Nadu</option><option>Gujarat</option><option>Rajasthan</option>
+                <option>Uttar Pradesh</option><option>West Bengal</option><option>Telangana</option>
+                <option>Kerala</option><option>Madhya Pradesh</option><option>Punjab</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="form-section-title" style="margin-bottom:12px">Delivery Option</p>
+          <div class="delivery-opts" style="margin-bottom:24px">
+            <label class="delivery-opt">
+              <input type="radio" name="delivery" value="standard" checked/>
+              <div>
+                <strong>Standard Delivery</strong>
+                <span>3–5 business days · Free</span>
+              </div>
+            </label>
+            <label class="delivery-opt">
+              <input type="radio" name="delivery" value="express"/>
+              <div>
+                <strong>Express Delivery</strong>
+                <span>1–2 business days · ₹149</span>
+              </div>
+            </label>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button type="button" class="btn btn-outline" id="backToCart">← Back</button>
+            <button type="submit" class="btn btn-primary">Continue to Payment →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- TAB 3: Payment -->
+    <div id="panelPayment" style="display:none">
+      <div class="cart-panel">
+        <p class="cart-panel-title">Payment Method</p>
+
+        <div class="pay-methods">
+          <label class="pay-method">
+            <input type="radio" name="pay" value="upi" checked/>
+            <span class="pay-icon-emoji">📲</span>
+            <span>UPI</span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="pay" value="card"/>
+            <span class="pay-icon-emoji">💳</span>
+            <span>Card</span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="pay" value="netbanking"/>
+            <span class="pay-icon-emoji">🏦</span>
+            <span>Net Banking</span>
+          </label>
+          <label class="pay-method">
+            <input type="radio" name="pay" value="cod"/>
+            <span class="pay-icon-emoji">💵</span>
+            <span>Cash on Delivery</span>
+          </label>
+        </div>
+
+        <!-- UPI form -->
+        <div class="pay-form-section" id="formUpi">
+          <div class="form-group">
+            <label>UPI ID</label>
+            <input type="text" placeholder="yourname@upi"/>
+          </div>
+        </div>
+
+        <!-- Card form -->
+        <div class="pay-form-section" id="formCard" style="display:none">
+          <div class="form-grid single" style="margin-bottom:12px">
+            <div class="form-group">
+              <label>Card Number</label>
+              <input type="text" placeholder="1234 5678 9012 3456" maxlength="19"/>
+            </div>
+          </div>
+          <div class="form-grid" style="margin-bottom:12px">
+            <div class="form-group">
+              <label>Expiry</label>
+              <input type="text" placeholder="MM/YY" maxlength="5"/>
+            </div>
+            <div class="form-group">
+              <label>CVV</label>
+              <input type="text" placeholder="•••" maxlength="3"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Name on Card</label>
+            <input type="text" placeholder="As printed on card"/>
+          </div>
+        </div>
+
+        <!-- Net Banking form -->
+        <div class="pay-form-section" id="formNetbanking" style="display:none">
+          <div class="form-group">
+            <label>Select Bank</label>
+            <select>
+              <option>State Bank of India</option>
+              <option>HDFC Bank</option>
+              <option>ICICI Bank</option>
+              <option>Axis Bank</option>
+              <option>Kotak Mahindra</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- COD info -->
+        <div class="pay-form-section" id="formCod" style="display:none">
+          <p style="font-size:0.85rem;color:var(--ink-3);padding:14px;background:var(--bg-alt);border-radius:8px;border:1px solid var(--border)">
+            Pay with cash when your order is delivered. Please keep the exact amount ready.
+          </p>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+          <button type="button" class="btn btn-outline" id="backToDelivery">← Back</button>
+          <button type="button" class="btn btn-primary" id="placeOrder">Place Order →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: Confirmation -->
+    <div id="panelConfirm" style="display:none">
+      <div class="cart-panel">
+        <div class="confirm-screen">
+          <div class="confirm-check">✓</div>
+          <h2>Order Placed! 🎉</h2>
+          <p>Your order has been confirmed. Get ready to level up!</p>
+          <div class="order-id-tag" id="orderIdTag">#NG-000000</div>
+          <p style="color:var(--ink-3);font-size:0.85rem">🚀 Expected delivery: <strong id="deliveryDate" style="color:var(--ink)"></strong></p>
+          <div id="confirmedItems" style="margin:20px 0;text-align:left;width:100%"></div>
+          <a href="shop.html" class="btn btn-primary" style="margin-top:8px">Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT — order summary -->
+  <div>
+    <div class="order-box" id="orderBox">
+      <p class="order-box-title">Order Summary</p>
+
+      <!-- Mini cart preview -->
+      <div id="orderMiniCart" style="margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:12px"></div>
+
+      <!-- Coupon -->
+      <div class="coupon-row">
+        <input type="text" class="coupon-input" id="couponInput" placeholder="Coupon code"/>
+        <button class="apply-btn" id="applyCoupon">Apply</button>
+      </div>
+      <p class="coupon-hint">Try: NEXUS15 · SAVE25 · FLAT1000</p>
+      <p class="coupon-msg" id="couponMsg"></p>
+
+      <!-- Totals -->
+      <div style="margin-top:14px">
+        <div class="order-row"><span>Subtotal</span><span id="sumSub">₹0</span></div>
+        <div class="order-row" id="discRow" style="display:none"><span>Discount (<span id="couponLabel"></span>)</span><span class="saving" id="sumDisc">-₹0</span></div>
+        <div class="order-row"><span>Delivery</span><span id="sumDelivery">Free</span></div>
+        <div class="order-row total"><span>Total</span><span id="sumTotal">₹0</span></div>
+      </div>
+
+      <p id="savingMsg" style="font-size:0.75rem;color:var(--accent-g);margin-top:8px;font-weight:600"></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer" style="margin-top:60px">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 NexusGear. All rights reserved.</p>
+      <p>Built for gamers, by gamers 🎮</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-wrap" id="toastWrap"></div>
+<script src="../js/script.js"></script>
+</body>
+</html>
